@@ -1,7 +1,7 @@
-#  - Plano de Testes Sprint 3 [Sicredi API Simulação de Crédito v1] - ![compass.svg](/uploads/217944039619357e305958145c080112/compass.svg)
+#  - Plano de Testes Sprint 3 [Sicredi API Simulação de Crédito v1] - ![Compass UOL Logo](img_plano_de_testes/compass.svg)
 
 
-# US 001: [API] Restrições
+# US 001: [API] Restrições ![User Story Icon](img_plano_de_testes/user.svg)
 ------
 "Como um consumidor da API eu gostaria de pode consultar os CPFs para saber quais deles possuem restrições"
 
@@ -18,7 +18,7 @@ No contexto de funcionalidades da API "Simulação de Crédito v1", principalmen
 A fim de agregar valor, na aplicação uma série de testes e análises serão feitas em cima da aplicação em questão.
 
 
-## Caso de testes US 001 ![test.svg](/uploads/fd41e63fe3e35b359609782a377bb8b9/test.svg)
+## Caso de testes US 001 ![Testes Icon](img_plano_de_testes/test.svg)
 
 Nomenclatura dos testes:
 
@@ -31,9 +31,9 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 - CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição
 - CTU1R1_002 Teste consultando um CPF sem restrição
 - CTU1R1_003 Teste consultando um CPF com restrição e resposta deve conter um Json com apenas strings
-- CTU1R1_003 Teste consultando um CPF no padrão /99999999999
-- CTU1R1_003 Teste consultando um CPF no padrão /999.999.999-99
-- CTU1R1_003 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
+- CTU1R1_004 Teste consultando um CPF no padrão /99999999999
+- CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99
+- CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
 
 ### R2
 - CTU1R2_001 Teste consultando a rota /restricoes sem informar um cpf e esperar um erro
@@ -48,15 +48,15 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 
 ### R5
 - CTU1R5_001 Teste consultando um CPF com restrição via POST
-- CTU1R5_001 Teste consultando um CPF sem restrição via POST
-- CTU1R5_001 Teste consultando um CPF com restrição via PUT
-- CTU1R5_001 Teste consultando um CPF sem restrição via PUT
-- CTU1R5_001 Teste consultando um CPF com restrição via DELETE
-- CTU1R5_001 Teste consultando um CPF sem restrição via PATCH
-- CTU1R5_001 Teste consultando um CPF com restrição via PATCH
+- CTU1R5_002 Teste consultando um CPF sem restrição via POST
+- CTU1R5_003 Teste consultando um CPF com restrição via PUT
+- CTU1R5_004 Teste consultando um CPF sem restrição via PUT
+- CTU1R5_005 Teste consultando um CPF com restrição via DELETE
+- CTU1R5_006 Teste consultando um CPF sem restrição via PATCH
+- CTU1R5_007 Teste consultando um CPF com restrição via PATCH
 
 
-## Testes candidatos a automação ![automação.svg](/uploads/b6cedbe066a9ca4267da2df9467d08f6/automação.svg)
+## Testes candidatos a automação ![Automação Icon](img_plano_de_testes/automação.svg)
 
 Esses testes são os que mais se repetem no processo de teste da aplicação, por causa disso sua automação pode ser necessária.
 
@@ -65,9 +65,9 @@ Esses testes são os que mais se repetem no processo de teste da aplicação, po
 - CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição
 - CTU1R1_002 Teste consultando um CPF sem restrição
 - CTU1R1_003 Teste consultando um CPF com restrição e resposta deve conter um json com apenas strings
-- CTU1R1_003 Teste consultando um CPF no padrão /99999999999
-- CTU1R1_003 Teste consultando um CPF no padrão /999.999.999-99
-- CTU1R1_003 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
+- CTU1R1_004 Teste consultando um CPF no padrão /99999999999
+- CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99
+- CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
 ---
 - CTU1R2_001 Teste consultando a rota /restricoes sem informar um cpf e esperar um erro
 ---
@@ -78,12 +78,12 @@ Esses testes são os que mais se repetem no processo de teste da aplicação, po
 - CTU1R4_002 Teste consultando um CPF com restrição e esperar que o status code não seja 204
 ---
 - CTU1R5_001 Teste consultando um CPF com restrição via POST
-- CTU1R5_001 Teste consultando um CPF sem restrição via POST
-- CTU1R5_001 Teste consultando um CPF com restrição via PUT
-- CTU1R5_001 Teste consultando um CPF sem restrição via PUT
-- CTU1R5_001 Teste consultando um CPF com restrição via DELETE
-- CTU1R5_001 Teste consultando um CPF sem restrição via PATCH
-- CTU1R5_001 Teste consultando um CPF com restrição via PATCH
+- CTU1R5_002 Teste consultando um CPF sem restrição via POST
+- CTU1R5_003 Teste consultando um CPF com restrição via PUT
+- CTU1R5_004 Teste consultando um CPF sem restrição via PUT
+- CTU1R5_005 Teste consultando um CPF com restrição via DELETE
+- CTU1R5_006 Teste consultando um CPF sem restrição via PATCH
+- CTU1R5_007 Teste consultando um CPF com restrição via PATCH
 
 
 ## Escopo:
@@ -94,6 +94,7 @@ Funções de Simulação de créditos, principalmente funções como, consultar 
 ## Cobertura
 
 Restrições (GET)
+
 Simulações (GET, GET{id}, POST, PUT, DELETE)
 
 Testes manuais testando outras rotas e funções básicas da API.
@@ -116,15 +117,14 @@ US 001: [API] Restrições
 - Automação de testes baseado na análise realizada;
 
 
-### Pessoas que testaram ![peaple.svg](/uploads/b26e028cf288aa9832b11739bec243ef/peaple.svg)
+### Pessoas que testaram ![Pessoas Icon](img_plano_de_testes/people.svg)
 
 | Equipe pb_Sprint_6 |
 | --- |
 | Higor Milani |
 
 
-### Ferramentas ![ferramenta.svg](/uploads/589fc388735633e4e612964c7734af88/ferramenta.svg)
-
+### Ferramentas ![Ferramentas Icon](img_plano_de_testes/ferramenta.svg)
 * Postman Version 10.15.4
 * Jira Software
 * GitLab
@@ -151,4 +151,4 @@ US 001: [API] Restrições
 * Simulação de Crédito v1
 
 
-![fututre.svg](/uploads/855ce7c4249236fae104ced55d70cd8a/fututre.svg)
+![Sempre olhe para o Futuro](img_plano_de_testes/future.svg)
