@@ -1,4 +1,4 @@
-package $package;
+package APISimulacaoDeCredito.ChallengeFinal;
 
 /**
  * Hello world!
