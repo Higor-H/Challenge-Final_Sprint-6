@@ -349,4 +349,6 @@ US 002: [API] Simulações
 * Simulação de Crédito v1
 
 
-![Sempre olhe para o Futuro](img_plano_de_testes/future.svg)
+![Sempre olhe para o Futuro](img_plano_de_testes/future.svg) 
+
+![Restritro](img_plano_de_testes/r.png) Documento Restrito! ![Restritro](img_plano_de_testes/docRestrito.svg)
