@@ -67,6 +67,7 @@ public class BaseRest extends BaseTest{
 	}
 	
 	public Response put(String endpoint, Object payload) {
+		
 		return
 		given().
 		spec(requestSpec).

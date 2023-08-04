@@ -2,6 +2,7 @@ package helper;
 
 import java.util.*;
 
+import datafactory.FakeCPF;
 import lombok.Data;
 
 
@@ -33,13 +34,22 @@ public class VariaveisUteis {
 	private String espacoBranco = " ";
 	private String caracterInvalido = "※₯á◌Ⅻ⨮Δ📖..";
 	private String numerosString = "5969866";
+	private String letrasString = "abcdefgH";
 	private Integer numb = 11;
-	private String maxCaracter = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-	//private String maxCaracters = "a".repeat(100);
-	private String minCaracter = "a";
-	//private String minCaracter = "a".repeat(1);
+	private String maxCaracter = "a".repeat(200);
+	private String minCaracter = "a".repeat(1);
     //Expecificos
+	private String cpfInvalidoFormatado = FakeCPF.formatarCPF(FakeCPF.gerarCPFInvalido());
+	private String cpfValidoFormatado = FakeCPF.formatarCPF(FakeCPF.gerarCPFValido());
+	private String cpfFormatado = FakeCPF.formatarCPF(FakeCPF.gerarCPF());
+	private String cpfInexistente = "12345678910";
+	
+	private String cpfValido = FakeCPF.gerarCPFValido();
+	private String cpfInvalido = FakeCPF.gerarCPFInvalido();
+	
 	private String[] listaTest = {nada, espacoBranco, caracterInvalido, maxCaracter };
 	private String[] listaTest2 = {minCaracter, maxCaracter };
 	private String[] listaTest3 = {espacoBranco, caracterInvalido, maxCaracter, minCaracter};
+	private String[] listaTest4 = {espacoBranco, caracterInvalido, maxCaracter, minCaracter, cpfInexistente, letrasString};
+	private String[] listaTest5 = {cpfValido, cpfInvalido};
 }
