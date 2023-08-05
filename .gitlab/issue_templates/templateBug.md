@@ -1,4 +1,4 @@
-# Problema Encontrado - Titulo - ![compass.svg](/uploads/217944039619357e305958145c080112/compass.svg)
+# Problema Encontrado - Titulo - ![compassUOL.svg](/uploads/9da8cb2e34688feda2482e0ace7e5348/compassUOL.svg)
 ## RESUMO
 Foi testado a regra :
 Com base na User Storie foi testado o {login/exemplo/65656565}
@@ -73,4 +73,4 @@ Body = none
 (imagem)
 
 
-![fututre.svg](/uploads/855ce7c4249236fae104ced55d70cd8a/fututre.svg)
+![future.svg](/uploads/fb9714703238fd9497370e2cc29d45d9/future.svg)
