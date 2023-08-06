@@ -5,12 +5,13 @@ import org.junit.jupiter.api.BeforeEach;
 import lombok.Getter;
 import lombok.Setter;
 import services.BaseRest;
+import services.VerbosService;
 
 @Getter
 @Setter
 public class BaseTest {
 	protected BaseRest rest;
-	//protected UsuariosService usuariosService;
+	protected VerbosService service;
 	protected VariaveisUteis v;
 	
 	
@@ -21,7 +22,7 @@ public class BaseTest {
 	@BeforeEach
 	public void instantiateServices() {
 		rest = new BaseRest();
-	//	usuariosService = new UsuariosService(rest);
+		service = new VerbosService();
 		v = new VariaveisUteis();
 	}
 }

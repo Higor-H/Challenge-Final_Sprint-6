@@ -10,11 +10,7 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
 import java.util.Random;
-
-
 import org.junit.jupiter.api.Test;
-
-
 import datafactory.FakeCPF;
 import helper.BaseTest;
 import helper.VariaveisUteis;
@@ -197,16 +193,7 @@ public class GETRestricoesTests extends BaseTest {
 		assertThat(responsePath.statusCode(), is(405));
 		assertThat(responsePath.statusCode(), is(not(200)));
 		assertThat(responsePath,is(not(nullValue())));
-		
-		
-		
+			
 		
 		}
-	
-	
-	
-	
-	
-	
-
 }

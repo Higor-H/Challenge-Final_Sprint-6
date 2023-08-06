@@ -52,4 +52,5 @@ public class VariaveisUteis {
 	private String[] listaTest3 = {espacoBranco, caracterInvalido, maxCaracter, minCaracter};
 	private String[] listaTest4 = {espacoBranco, caracterInvalido, maxCaracter, minCaracter, cpfInexistente, letrasString};
 	private String[] listaTest5 = {cpfValido, cpfInvalido};
+	private String[] listaTest6 = { caracterInvalido, maxCaracter, minCaracter, cpfInexistente, letrasString};
 }

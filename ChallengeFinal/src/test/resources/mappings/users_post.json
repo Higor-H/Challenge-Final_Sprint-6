@@ -1,0 +1,17 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/usuarios"
+    },
+    "response": {
+        "status": 201,
+        "headers": { "Content-Type": "application/json" },
+        "jsonBody": {
+            "id": 999999,
+            "nome": "{{{jsonPath request.body '$.nome'}}}",
+            "email": "{{{jsonPath request.body '$.email'}}}", 
+            "password": "{{{jsonPath request.body '$.password'}}}",
+            "administrador": "{{{jsonPath request.body '$.administrador'}}}"
+        }
+    }   
+}
