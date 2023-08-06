@@ -80,6 +80,70 @@ public class DynamicFactory {
 		return simulacao;
 	}
 	
+	public static Simulacao generateRandomSimulacaosDadosErradosEmail(String cpf) {
+		
+		Random random = new Random();
+		Simulacao simulacao = new Simulacao();
+		
+		
+		
+		int randomNumber = random.nextInt(4);
+		String[] listaTestEmail = v.getListaTestEmail();
+		
+		String email = listaTestEmail[randomNumber]+v.getTerminoEmail();
+		
+		int valor = random.nextInt(1000,40000);
+		int parcelas = random.nextInt(2,48);
+		
+		simulacao.setNome(faker.name().fullName());
+		simulacao.setCpf(cpf);
+		simulacao.setEmail(email); //"@qatest.com"
+		simulacao.setValor(valor);
+		simulacao.setParcelas(parcelas);
+		simulacao.setSeguro(random.nextBoolean());
+		
+		return simulacao;
+	}
+
+	public static Simulacao generateRandomSimulacaosDadosErradosValor(String cpf , int valor) {
+	
+		Random random = new Random();
+		Simulacao simulacao = new Simulacao();
+		
+	
+		int parcelas = random.nextInt(2,48);
+		String nome = faker.name().firstName();
+		
+		simulacao.setNome(nome + v.getEspacoBranco() + faker.name().lastName());
+		simulacao.setCpf(cpf);
+		simulacao.setEmail(nome.toLowerCase()+v.getTerminoEmail()); //"@qatest.com"
+		simulacao.setValor(valor);
+		simulacao.setParcelas(parcelas);
+		simulacao.setSeguro(random.nextBoolean());
+	
+		return simulacao;
+	}
+	
+	public static Simulacao generateRandomSimulacaosDadosErradosParcelas(String cpf , int parcelas) {
+		
+		Random random = new Random();
+		Simulacao simulacao = new Simulacao();
+		
+	
+		int valor = random.nextInt(1000,40000);;
+		String nome = faker.name().firstName();
+		
+		simulacao.setNome(nome + v.getEspacoBranco() + faker.name().lastName());
+		simulacao.setCpf(cpf);
+		simulacao.setEmail(nome.toLowerCase()+v.getTerminoEmail()); //"@qatest.com"
+		simulacao.setValor(valor);
+		simulacao.setParcelas(parcelas);
+		simulacao.setSeguro(random.nextBoolean());
+	
+		return simulacao;
+	}
+	
+	
 
 	
 

@@ -1,26 +1,12 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-      "erros": {
-        "type": "object",
-        "properties": {
-          "additionalProp1": {
-            "type": "string"
-          },
-          "additionalProp2": {
-            "type": "string"
-          },
-          "additionalProp3": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "additionalProp1"
-        ]
-      }
-    },
-    "required": [
-      "erros"
-    ]
-  }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "erros": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "erros"
+  ]
+}

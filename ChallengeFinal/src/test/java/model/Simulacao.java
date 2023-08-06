@@ -22,7 +22,7 @@ public class Simulacao {
 	
 	
 	@JsonProperty(value = "id", access = Access.WRITE_ONLY)
-	private String id; // É apenas lido na desserialização
+	private int id; // É apenas lido na desserialização
 	
 	
 	
