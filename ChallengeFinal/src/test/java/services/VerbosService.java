@@ -23,7 +23,11 @@ public class VerbosService  extends BaseTest{
 	
 	public Response deleteSimulacao(String endpoint, long id) {
 		  String idS = String.valueOf(id);
-		return rest.delete(SIMULACOES +"/"+ idS);
+		return rest.delete(endpoint +"/"+ idS);
+	}
+	
+	public Response putSimulacao( String cpf, Object payload) {
+		return rest.put(SIMULACOES +"/"+ cpf, payload);
 	}
 	
 	

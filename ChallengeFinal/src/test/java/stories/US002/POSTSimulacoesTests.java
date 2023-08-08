@@ -143,7 +143,7 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
-	public void deveReceberErroAoRealizarPOSTComdadosErrados() { //f
+	public void deveReceberErroAoRealizarPOSTComdadosErradosNome() { //f
 		// CTU2R3_001 Teste tentando realizar um POST com o campo nome sendo um caractere em branco 
 		// CTU2R3_003 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido
 		// CTU2R3_004 Teste tentando realizar um POST com o campo nome sendo um apenas números
@@ -310,7 +310,6 @@ public class POSTSimulacoesTests  extends BaseTest{
 		
 		Response response = rest.post(SIMULACOES, simulacao );
 		
-		//DELETA MASSA DO BANCO DE DADOS
 		
 		//DELETA MASSA DO BANCO DE DADOS
 		verbosService.deleteMassa(response, simulacao);

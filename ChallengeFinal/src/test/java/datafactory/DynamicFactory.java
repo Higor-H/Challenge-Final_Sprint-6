@@ -130,7 +130,7 @@ public class DynamicFactory {
 		Simulacao simulacao = new Simulacao();
 		
 	
-		int valor = random.nextInt(1000,40000);;
+		int valor = random.nextInt(1000,40000);
 		String nome = faker.name().firstName();
 		
 		simulacao.setNome(nome + v.getEspacoBranco() + faker.name().lastName());
@@ -142,6 +142,7 @@ public class DynamicFactory {
 	
 		return simulacao;
 	}
+	
 	
 	
 
