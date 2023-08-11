@@ -1,92 +1,104 @@
-# Challenge Final - Sprint 6
+![Challenge Final - Sprint 6](img/Challenge%20Final.svg)
 
+## Esse repositório tem como objetivo trazer um projeto de automação para a API Simulações de Credito.
 
+Esse projeto é realizado por Higor Milani pelo programa de bolsas da [Compass.UOL](https://compass.uol/en/about-us/) em Automação de Testes em Java Back-end.
 
-## Getting started
+A fim de agregar valor na aplicação esse projeto consta com uma vasta documentação disponível em [Documentação](https://docs.google.com/document/d/1V4Ivsur7kMg_KByYb0foMhyQZ419nKII07iXW0mnAxo/edit?usp=sharing)
+Esse projeto possui um código de automação escrito em JAVA utilizando ferramentas com RestAssured, um Plano de testes com informações sobre a API, casos de testes, DoR, DoD, User Stories, Acceptance Criteria, Mapa Mental da API, Documentação da API e seu repositório, Issues, Bugs e Melhorias levantadas. 
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Requisições e ferramentas
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Instalados na maquina a ser executada.
+- [Java +8](https://www.oracle.com/java/technologies/downloads/#java20)
+- [Maven](https://maven.apache.org/download.cgi)
 
-## Add your files
+## Como configura as Variaveis de ambiente?
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+1. Pesquise por “variaveis” na barra de busca do Windows e selecione Editar as variáveis de ambiente do sistema:
 
+![1](img/12.png)
+
+2. Clique em Variáveis de Ambiente…
+
+![2](img/2.png)
+
+3. Em Variáveis do sistema (caso não tenha permissões de admin, realize os próximos passos em Variáveis do usuário…), clique em Novo…
+
+![3](img/3.png)
+
+4. Na janela que abrir preencha os dados e clique em OK como na imagem a seguir. Utilize o caminho do seu computador onde instalou o JDK (aqui não colocamos a pasta bin junto).
+
+![4](img/4.png)
+
+5. Encontre e selecione a variável Path, em seguida clique em Editar…
+
+![5](img/5.png)
+
+6. Na janela que abrir, clique em novo:
+
+![6](img/6.png)
+
+7. Adicione ambos os caminhos: C:\apache-maven-3.8.6\bin e C:\jdk-18.0.2\bin . Lembrando que devem ser os caminhos que você instalou em sua máquina!
+
+8. Clique em OK até sair de todas as janelas abertas pela configuração de variáveis!
+
+![Gif Tutorial](/img/Gi_Variaveis.gif)
+
+Caso tenha duvidas consulte https://www.baeldung.com/install-maven-on-windows-linux-mac
+
+## Como executar a API Localmente?
+Para executar a API localmente você pode baixa-la em: [Desafio Sicredi GitHub](https://github.com/desafios-qa-automacao/desafio-sicredi/tree/master)
+
+E na pasta Raiz do projeto (\desafio-sicredi\prova-tecnica-api) abrir o terminal e executar os seguintes comandos:
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/higor_sprints/challenge-final-sprint-6.git
-git branch -M main
-git push -uf origin main
+mvn clean spring-boot:run
+```
+Assim a API estará executando por padrão na porta 8080
+caso seja necessario mudar a porta use esse comando abaixo em vez do de cima:
+(em vez de 8888 voce pode usar a porta desejada)
+```
+mvn clean spring-boot:run -Dserver.port=8888
+```
+Assim que a API estejá executando voce pode consultar o Swagger em : http://localhost:8080/swagger-ui.html#
+
+Caso você encontre um erro ao executar a API tente mudar a Versão do lombok em: \desafio-sicredi\prova-tecnica-api\pom.xml
+na linha 55 mude de <version>1.18.8</version> para <version>1.18.28</version> e execute mvn clean spring-boot:run novamente
+(Mais sobre esse problema em: https://gitlab.com/higor_sprints/challenge-final-sprint-6/-/issues/1 )
+
+## Como Executar os Testes?
+Para executar os localmente você pode baixar esse repositório, abrir a pasta Raiz e executar o comando:
+
+Executa os códigos
+```
+ mvn test -Denv=local
+``` 
+Gera o report dos testes executados
+```
+mvn allure:report
+``` 
+Sobe um servidor com os reports com gráficos e outras informações sobre os testes
+```
+mvn allure:serve
 ```
 
-## Integrate with your tools
+(Em caso de duvidas consultar a documentação do Allure [Aqui](https://github.com/allure-framework/allure2/releases) )
 
-- [ ] [Set up project integrations](https://gitlab.com/higor_sprints/challenge-final-sprint-6/-/settings/integrations)
+## Links 
 
-## Collaborate with your team
+[Plano de Testes](https://gitlab.com/higor_sprints/challenge-final-sprint-6/-/blob/develop/Plano%20de%20Testes/Plano%20de%20Testes.md?ref_type=heads)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+[Repositório dos testes automatizados](https://gitlab.com/higor_sprints/challenge-final-sprint-6)
 
-## Test and Deploy
+[Repositório da API](https://github.com/desafios-qa-automacao/desafio-sicredi)
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
 
-***
+## Agradecimentos
+- Obrigado a Compass UOL pela oportunidade
+- Obrigado Rafael e Jacques pelas mentorias 
+- Obrigado ao time de bolsas pelo auxilio
+- Obrigado ao Guilherme pelas ajudas com os asserts e códigos
+- Obrigado a todos os meus colegas na bolsa de estudos por me ajudarem nessa trilha, obrigado por disponibilizar o tempo e a simpatia pela equipe.
 
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+![rodapé](img/rodape.png)
