@@ -4,36 +4,30 @@ import static constants.Endpoints.RESTRICOES;
 import static constants.Endpoints.SIMULACOES;
 import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
-import java.lang.Float;
-
-import java.util.Random;
-
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matcher;
 
-import org.hamcrest.core.AnyOf;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import datafactory.DynamicFactory;
 import datafactory.FakeCPF;
 import helper.BaseTest;
-import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import model.Simulacao;
-import services.VerbosService;
+
 
 public class FluxoAPITests extends BaseTest {
 
 	@Test
+	@Epic("Fluxos")
+	@Tag("Fluxo")
+	@Tag("Bug")
+	@Description("Fluxo passando por todos os verbos de todas as rotas da API")
 	public void deveRealizarFluxoEmTodasAsRotasDaAPI() {
 		
 		// GET - ROTA DE RESTRICOES----------------------------------------------------------------

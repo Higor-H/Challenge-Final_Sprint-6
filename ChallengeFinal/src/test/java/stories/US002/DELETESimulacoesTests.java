@@ -1,31 +1,21 @@
 package stories.US002;
 
 import static constants.Endpoints.SIMULACOES;
-import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
-import java.lang.Float;
 
 import java.util.Random;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matcher;
 
-import org.hamcrest.core.AnyOf;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import datafactory.DynamicFactory;
-import datafactory.FakeCPF;
 import helper.BaseTest;
-import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import model.Simulacao;
 import services.VerbosService;
@@ -35,6 +25,9 @@ public class DELETESimulacoesTests extends BaseTest {
 	private VerbosService verbosService = new VerbosService();
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("DELETE")
+	@Description("CTU2R12_002 Teste tentando realizar um DELETE em uma simulação pelo ID")
 	public void deveDeletarSimulacaoComDELETE() {
 		//CTU2R12_002 Teste tentando realizar um DELETE em uma simulação pelo ID
 		
@@ -60,6 +53,9 @@ public class DELETESimulacoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("DELETE")
+	@Description("CTU2R12_001 Teste tentando realizar um DELETE em uma simulação pelo CPF, Nome, email ou outro dado do cadastro")
 	public void deveNaoDeletarSimulacaoPorNomeOuEmail() {
 		//CTU2R12_001 Teste tentando realizar um DELETE em uma simulação pelo CPF, Nome, email ou outro dado do cadastro
 		
@@ -98,6 +94,10 @@ public class DELETESimulacoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("DELETE")
+	@Description("CTU2R12_001 Teste tentando realizar um DELETE em uma simulação pelo CPF - MELHORIA")
 	public void deveNaoDeletarSimulacaoPeloCPF() { //f
 		//CTU2R12_001 Teste tentando realizar um DELETE em uma simulação pelo CPF
 		
@@ -130,6 +130,9 @@ public class DELETESimulacoesTests extends BaseTest {
 		}
 
 	@Test
+	@Epic("Simulacoes")
+	@Tag("DELETE")
+	@Description("CTU2R12_005 Teste tentando realizar um DELETE em uma simulação sem passar um valor e esperar que o banco de dados não seja deletado")
 	public void deveNaoDeletarTodasAsSimulacaoAoNaoPassarUmId() { 
 		//CTU2R12_005 Teste tentando realizar um DELETE em uma simulação sem passar um valor e esperar que o banco de dados não seja deletado
 		

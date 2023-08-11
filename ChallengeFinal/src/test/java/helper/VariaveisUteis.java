@@ -20,6 +20,7 @@ public class VariaveisUteis {
 	private String token = "noToken";
     //Dados de teste
 	private String terminoEmail = "@qatest.com";
+	private Number notacao = 2.5E+6;
 	private String idInvalido = "Ab1Cd2Ef4Gh5Ij6K";
 	private String idInvalidoQuery = "?_id=Ab1Cd2Ef4Gh5Ij6K";
 	private String idValidoQuery = "?_id=wKmsFoitXBv84Lt9";

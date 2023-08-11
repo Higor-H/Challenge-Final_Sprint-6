@@ -1,12 +1,9 @@
 package stories.US002;
 
-import static constants.Endpoints.RESTRICOES;
 import static constants.Endpoints.SIMULACOES;
 import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -14,16 +11,14 @@ import static org.hamcrest.Matchers.nullValue;
 
 import java.util.Random;
 
-import org.hamcrest.core.AnyOf;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import datafactory.DynamicFactory;
 import datafactory.FakeCPF;
 import helper.BaseTest;
-import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import model.Simulacao;
 import services.VerbosService;
@@ -34,6 +29,11 @@ public class GETSimulacoesTests extends BaseTest {
 	private VerbosService verbosService = new VerbosService();
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
+	@Description("CTU2R1_002 Teste tentando realizar um GET informando um CPF com restrição e esperar um erro")
 	public void deveDarGETEmCPFComRestricao() { //f
 		
 		// CTU2R1_002 Teste tentando realizar um GET informando um CPF com restrição e esperar um erro
@@ -52,6 +52,11 @@ public class GETSimulacoesTests extends BaseTest {
 	}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
+	@Description("CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)")
 	public void deveDarGETSemPassarCPFCorreto() { //f
 		// CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
 		
@@ -75,6 +80,10 @@ public class GETSimulacoesTests extends BaseTest {
 	
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
+	@Description("CTU2R11_001 Caso não existam simulações cadastradas ao realizar um GET em /simulacoes um status code 204 deve ser retornado")
 	public void deveDarGETSemPassarUmCPF() {
 		// CTU2R11_001 Caso não existam simulações cadastradas ao realizar um GET em /simulacoes um status code 204 deve ser retornado
 		
@@ -99,6 +108,9 @@ public class GETSimulacoesTests extends BaseTest {
 	}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
 	public void deveDarGETEmSimulacaoCadastrada() {
 
 		Simulacao simulacao = DynamicFactory.generateRandomSimulacaos();
@@ -133,6 +145,9 @@ public class GETSimulacoesTests extends BaseTest {
 
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
 	public void deveDarGETEmCPFSemRestricao() {
 		
 		
@@ -150,6 +165,11 @@ public class GETSimulacoesTests extends BaseTest {
 	}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Tag("SimulacoesGET")
+	@Description("CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro")
 	public void deveRetornarErroEmCPFComRestricoesEFormatado() { //f
 		
 		// CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro
@@ -166,19 +186,4 @@ public class GETSimulacoesTests extends BaseTest {
 		assertThat(response.path("error"), equalTo("Not Found"));
 		
 	}
-	
-//	@Test
-//	public void deveGETEmBancoDeDadosVazio() { //f
-//		
-//		// CTU2R11_001 Caso não existam simulações cadastradas ao realizar um GET em /simulacoes um status code 204 deve ser retornado
-//		
-//		String cpfInvalido = v.getCpfInvalidoFormatado();
-//		
-//		Response response = rest.get(SIMULACOES, cpfInvalido);
-//		assertThat(response.statusCode(), is(204));
-//		assertThat(response.statusCode(), is(not(200)));
-//		assertThat(response.statusCode(), is(not(404)));
-//		
-//	}
-
 }

@@ -3,20 +3,20 @@ package stories.US001;
 import static constants.Endpoints.RESTRICOES;
 import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
 import java.util.Random;
+
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import datafactory.FakeCPF;
 import helper.BaseTest;
 import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 
 public class GETRestricoesTests extends BaseTest {
@@ -25,12 +25,15 @@ public class GETRestricoesTests extends BaseTest {
 	VariaveisUteis v = new VariaveisUteis();
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Description("CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição\r\n"
+			+ "		CTU1R1_003 Teste consultando um CPF com restrição e resposta deve conter um Json com apenas strings\r\n"
+			+ "		CTU1R3_001 Teste consultando um CPF com restrição e esperar um status code 200\r\n"
+			+ "		CTU1R4_002 Teste consultando um CPF com restrição e esperar que o status code não seja 204")
 	public void deveDarGETEmCPFComRestricao() { //f
-		// CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição
-		// CTU1R1_003 Teste consultando um CPF com restrição e resposta deve conter um Json com apenas strings
-		// CTU1R3_001 Teste consultando um CPF com restrição e esperar um status code 200
-		// CTU1R4_002 Teste consultando um CPF com restrição e esperar que o status code não seja 204
-		
+
 		String cpfInvalido = FakeCPF.gerarCPFInvalido();
 		
 		Response response = rest.get(RESTRICOES, cpfInvalido);
@@ -44,11 +47,14 @@ public class GETRestricoesTests extends BaseTest {
 	}
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("GET")
+	@Description("CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição\r\n"
+			+ "		CTU1R1_004 Teste consultando um CPF no padrão /99999999999\r\n"
+			+ "		CTU1R3_002 Teste consultando um CPF sem restrição e esperar que o status code não seja 200\r\n"
+			+ "		CTU1R4_001 Teste consultando um CPF sem restrição e esperar um status code 204")
 	public void deveDarGETEmCPFSemRestricao() {
-		// CTU1R1_001 Teste consultando um CPF com restrição e esperar uma mensagem e o CPF consultado afirmando que ele está com restrição
-		// CTU1R1_004 Teste consultando um CPF no padrão /99999999999
-		// CTU1R3_002 Teste consultando um CPF sem restrição e esperar que o status code não seja 200
-		// CTU1R4_001 Teste consultando um CPF sem restrição e esperar um status code 204
+
 		
 		String cpf = FakeCPF.gerarCPFValido();
 		
@@ -59,6 +65,9 @@ public class GETRestricoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("GET")
+	@Description("CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99")
 	public void deveDarGETEmCPFFormatadoSemRestricao() {
 		// CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99
 		
@@ -72,6 +81,10 @@ public class GETRestricoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Description("CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99")
 	public void deveDarGETEmCPFFormatadoComRestricao() { //f
 		// CTU1R1_005 Teste consultando um CPF no padrão /999.999.999-99
 		
@@ -90,6 +103,10 @@ public class GETRestricoesTests extends BaseTest {
 		}
 		
 	@Test
+	@Epic("Restricoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Description("CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)")
 	public void deveDarGETSemPassarCPFCorreto() { //f
 		// CTU1R1_006 Teste consultando um CPF em padrões fora do esperado (letras, caracteres inválidos, query entre outros)
 		
@@ -110,6 +127,10 @@ public class GETRestricoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("Bug")
+	@Tag("GET")
+	@Description("CTU1R2_001 Teste consultando a rota /restricoes sem informar um cpf e esperar um erro")
 	public void deveDarGETEEsperarErro() { //f
 		// CTU1R2_001 Teste consultando a rota /restricoes sem informar um cpf e esperar um erro
 		
@@ -126,15 +147,16 @@ public class GETRestricoesTests extends BaseTest {
 		}
 	
 	@Test
+	@Epic("Restricoes")
+	@Tag("GET")
+	@Description("CTU1R5_001 Teste consultando um CPF com restrição via POST\r\n"
+			+ "		CTU1R5_002 Teste consultando um CPF sem restrição via POST\r\n"
+			+ "		CTU1R5_003 Teste consultando um CPF com restrição via PUT\r\n"
+			+ "		CTU1R5_004 Teste consultando um CPF sem restrição via PUT\r\n"
+			+ "		CTU1R5_005 Teste consultando um CPF com restrição via DELETE\r\n"
+			+ "		CTU1R5_006 Teste consultando um CPF sem restrição via PATCH\r\n"
+			+ "		CTU1R5_007 Teste consultando um CPF com restrição via PATCH")
 	public void deveTestarQuaisVerbosSãoPossiveis() {
-		
-		// CTU1R5_001 Teste consultando um CPF com restrição via POST
-		// CTU1R5_002 Teste consultando um CPF sem restrição via POST
-		// CTU1R5_003 Teste consultando um CPF com restrição via PUT
-		// CTU1R5_004 Teste consultando um CPF sem restrição via PUT
-		// CTU1R5_005 Teste consultando um CPF com restrição via DELETE
-		// CTU1R5_006 Teste consultando um CPF sem restrição via PATCH
-		// CTU1R5_007 Teste consultando um CPF com restrição via PATCH
 	
 		
 		int randomNumber = random.nextInt(2);
@@ -193,7 +215,5 @@ public class GETRestricoesTests extends BaseTest {
 		assertThat(responsePath.statusCode(), is(405));
 		assertThat(responsePath.statusCode(), is(not(200)));
 		assertThat(responsePath,is(not(nullValue())));
-			
-		
 		}
 }

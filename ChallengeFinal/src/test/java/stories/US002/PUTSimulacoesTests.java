@@ -3,29 +3,22 @@ package stories.US002;
 import static constants.Endpoints.SIMULACOES;
 import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
-import java.lang.Float;
+import static org.hamcrest.CoreMatchers.*;
 
+import java.lang.Float;
 import java.util.Random;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matcher;
-
-import org.hamcrest.core.AnyOf;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import datafactory.DynamicFactory;
 import datafactory.FakeCPF;
 import helper.BaseTest;
-import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import model.Simulacao;
 import services.VerbosService;
@@ -35,6 +28,10 @@ public class PUTSimulacoesTests extends BaseTest{
 	private VerbosService verbosService = new VerbosService();
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R8_002 Teste realizando um POST de uma simulação, tentando realizar outro POST no mesmo CPF, realizar um DELETE, e então realizar outro POST")
 	public void deveAlterarOsValoresComPUT() { // f
 		// CTU2R8_002 Teste realizando um POST de uma simulação, tentando realizar outro POST no mesmo CPF, realizar um DELETE, e então realizar outro POST
 		
@@ -68,6 +65,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R1_004 Teste tentando realizar um PUT em uma simulação que tem um CPF válido e tentar alterar ele para um CPF com restrição")
 	public void deveNaoMudarCPFParaCPFComRestricaoComPUT() { //f
 		// CTU2R1_004 Teste tentando realizar um PUT em uma simulação que tem um CPF válido e tentar alterar ele para um CPF com restrição
 		
@@ -94,6 +95,11 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R2_005 Teste tentando realizar um PUT de CPF válido para o formato 999.999.999-99 e esperar um erro\r\n"
+			+ "		 CTU2R9_001 Teste tentando realizar um POST e PUT com erros no body e esperar uma mensagem de erro")
 	public void deveNaoMudarCPFParaCPFIFormatado() { //f
 		// CTU2R2_005 Teste tentando realizar um PUT de CPF válido para o formato 999.999.999-99 e esperar um erro
 		// CTU2R9_001 Teste tentando realizar um POST e PUT com erros no body e esperar uma mensagem de erro
@@ -120,6 +126,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R2_010 Teste tentando realizar um PUT de CPF valido o passando letras e outros caracteres esperar um erro")
 	public void deveNaoMudarCPFParaCPFInvalido() { //f
 		// CTU2R2_010 Teste tentando realizar um PUT de CPF valido o passando letras e outros caracteres esperar um erro
 
@@ -145,6 +155,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R3_008 Teste tentando realizar um PUT com nome invalido")
 	public void deveNaoMudarNomeParaNomeInvalido() { //f
 		// CTU2R3_008 Teste tentando realizar um PUT com nome invalido
 
@@ -170,6 +184,9 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("PUT")
+	@Description("CTU2R4_008 Teste tentando realizar um PUT com email invalido ")
 	public void deveNaoMudarEmailParaEmailInvalido() { 
 		// CTU2R4_008 Teste tentando realizar um PUT com email invalido 
 
@@ -197,6 +214,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000")
 	public void deveNaoMudarValorParaValorInvalidoMenorQue1000() { //f
 		// CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000  
 		
@@ -227,6 +248,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000 ")
 	public void deveNaoMudarValorParaValorInvalidoMaiorQue40000() { //f
 		// CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000  
 		
@@ -257,6 +282,9 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("PUT")
+	@Description("CTU2R6_005 Teste tentando realizar um PUT com o campo parcelas sendo menor 2 ou maior 48")
 	public void deveNaoMudarParcelasParaParcelasInvalidoMenorQue2() { 
 		// CTU2R6_005 Teste tentando realizar um PUT com o campo parcelas sendo menor 2 ou maior 48  
 		
@@ -288,6 +316,10 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("PUT")
+	@Description("CTU2R6_005 Teste tentando realizar um PUT com o campo parcelas sendo menor 2 ou maior 48 ")
 	public void deveNaoMudarParcelasParaParcelasInvalidoMaiorQue48() { //f
 		// CTU2R6_005 Teste tentando realizar um PUT com o campo parcelas sendo menor 2 ou maior 48  
 		
@@ -318,6 +350,9 @@ public class PUTSimulacoesTests extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("PUT")
+	@Description("CTU2R10_001 Teste tentando realizar um PUT em um CPF que não tem simulações cadastradas e esperar um erro")
 	public void deveNaoCadastrarUsuarioComPUT() { 
 		// CTU2R10_001 Teste tentando realizar um PUT em um CPF que não tem simulações cadastradas e esperar um erro
 		

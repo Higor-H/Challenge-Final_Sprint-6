@@ -1,31 +1,23 @@
 package stories.US002;
 
-import static constants.Endpoints.RESTRICOES;
+
 import static constants.Endpoints.SIMULACOES;
 import static helper.ServiceHelper.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.CoreMatchers.*;
 
 import java.util.Random;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matcher;
-
-import org.hamcrest.core.AnyOf;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import datafactory.DynamicFactory;
 import datafactory.FakeCPF;
 import helper.BaseTest;
-import helper.VariaveisUteis;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import model.Simulacao;
 import services.VerbosService;
@@ -35,11 +27,13 @@ public class POSTSimulacoesTests  extends BaseTest{
 	private VerbosService verbosService = new VerbosService();
 
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description("CTU2R2_006 Teste tentando realizar um POST de usando o formato 99999999999 e esperar um sucesso\r\n"
+			+ "		CTU2R4_001 Teste tentando realizar um POST com um email válido (xx.xx@xx.xx)\r\n"
+			+ "		CTU2R5_003 Teste tentando realizar um POST com o campo valor sendo maior que 999 e menor que 40001\r\n"
+			+ "		CTU2R6_003 Teste tentando realizar um POST com o campo parcelas sendo maior que 1 e menor que 49")
 	public void deveCadastrarSimulacao() {
-		// CTU2R2_006 Teste tentando realizar um POST de usando o formato 99999999999 e esperar um sucesso
-		// CTU2R4_001 Teste tentando realizar um POST com um email válido (xx.xx@xx.xx)
-		// CTU2R5_003 Teste tentando realizar um POST com o campo valor sendo maior que 999 e menor que 40001
-		// CTU2R6_003 Teste tentando realizar um POST com o campo parcelas sendo maior que 1 e menor que 49
 		
 		Simulacao simulacao = DynamicFactory.generateRandomSimulacaos();
 		String cpf = simulacao.getCpf();
@@ -66,6 +60,10 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R1_001 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro")
 	public void deveReceberErroAoRealizarPOSTComCPFComRestricao() { //f
 		// CTU2R1_001 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro
 		
@@ -92,6 +90,10 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro")
 	public void deveReceberErroAoRealizarPOSTComCPFFormatadoComRestricao() { //f
 		// CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro
 		
@@ -116,6 +118,11 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R2_009 Teste tentando realizar um POST de usando o passando letras e outros caracteres esperar um erro\r\n"
+			+ "	CTU2R9_001 Teste tentando realizar um POST e PUT com erros no body e esperar uma mensagem de erro")
 	public void deveReceberErroAoRealizarPOSTSemPassarUmCPF() { //f
 		// CTU2R2_009 Teste tentando realizar um POST de usando o passando letras e outros caracteres esperar um erro
 		//CTU2R9_001 Teste tentando realizar um POST e PUT com erros no body e esperar uma mensagem de erro
@@ -143,12 +150,15 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R3_001 Teste tentando realizar um POST com o campo nome sendo um caractere em branco \r\n"
+			+ "		CTU2R3_003 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido\r\n"
+			+ "		CTU2R3_004 Teste tentando realizar um POST com o campo nome sendo um apenas números\r\n"
+			+ "		CTU2R3_006 Teste tentando realizar um POST com um nome muito longo\r\n"
+			+ "		CTU2R3_007 Teste tentando realizar um POST com um nome sendo apenas 1 caractere")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosNome() { //f
-		// CTU2R3_001 Teste tentando realizar um POST com o campo nome sendo um caractere em branco 
-		// CTU2R3_003 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido
-		// CTU2R3_004 Teste tentando realizar um POST com o campo nome sendo um apenas números
-		// CTU2R3_006 Teste tentando realizar um POST com um nome muito longo
-		// CTU2R3_007 Teste tentando realizar um POST com um nome sendo apenas 1 caractere
 		
 		Random random = new Random();
 		
@@ -178,12 +188,13 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description("CTU2R4_002 Teste tentando realizar um POST com o campo email sendo um caractere em branco\r\n"
+			+ "		CTU2R4_004 Teste tentando realizar um POST com o campo email sendo um caracteres invalido\r\n"
+			+ "		CTU2R4_006 Teste tentando realizar um POST com email com excesso de caracteres aceitos\r\n"
+			+ "		CTU2R4_008 Teste tentando realizar um PUT com email invalido")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosEmail() { 
-		// CTU2R4_002 Teste tentando realizar um POST com o campo email sendo um caractere em branco
-		// CTU2R4_004 Teste tentando realizar um POST com o campo email sendo um caracteres invalido
-		// CTU2R4_006 Teste tentando realizar um POST com email com excesso de caracteres aceitos
-		// CTU2R4_008 Teste tentando realizar um PUT com email invalido
-		
 		
 		String cpf = datafactory.FakeCPF.gerarCPFValido();
 		
@@ -206,8 +217,11 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R5_001 Teste tentando realizar um POST com o campo valor sendo menor que 1000")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosValorMin1000() { //f
-		// CTU2R5_001 Teste tentando realizar um POST com o campo valor sendo menor que 1000
 		
 		Random random = new Random();
 		
@@ -235,8 +249,10 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description("CTU2R5_002 Teste tentando realizar um POST com o campo valor sendo maior que 40000")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosValorMax40000() { 
-		// CTU2R5_002 Teste tentando realizar um POST com o campo valor sendo maior que 40000
 		
 		Random random = new Random();
 		
@@ -264,9 +280,11 @@ public class POSTSimulacoesTests  extends BaseTest{
 		
 		}
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description(" CTU2R6_001 Teste tentando realizar um POST com o campo parcelas sendo menor que 2\r\n"
+			+ "	 CTU2R6_002 Teste tentando realizar um POST com o campo parcelas sendo maior que 48")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosParcelasMin2() { 
-		// - CTU2R6_001 Teste tentando realizar um POST com o campo parcelas sendo menor que 2
-		// CTU2R6_002 Teste tentando realizar um POST com o campo parcelas sendo maior que 48
 		
 		
 		Random random = new Random();
@@ -296,8 +314,11 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("Bug")
+	@Tag("POST")
+	@Description("CTU2R6_002 Teste tentando realizar um POST com o campo parcelas sendo maior que 48")
 	public void deveReceberErroAoRealizarPOSTComdadosErradosParcelasMax48() { //f
-		// CTU2R6_002 Teste tentando realizar um POST com o campo parcelas sendo maior que 48
 		
 		
 		Random random = new Random();
@@ -327,6 +348,9 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description("CTU2R8_001 Teste tentando realizar um POST passando um CPF já utilizado")
 	public void deveNaoCadastrarSimulacaoRepetida() {
 		// CTU2R8_001 Teste tentando realizar um POST passando um CPF já utilizado
 		
@@ -360,6 +384,9 @@ public class POSTSimulacoesTests  extends BaseTest{
 		}
 	
 	@Test
+	@Epic("Simulacoes")
+	@Tag("POST")
+	@Description("CTU2R8_002 Teste realizando um POST de uma simulação, tentando realizar outro POST no mesmo CPF, realizar um DELETE, e então realizar outro POST")
 	public void deveCadastrarSimulacaoRepetidaECadastrarDenovo1() {
 		// CTU2R8_002 Teste realizando um POST de uma simulação, tentando realizar outro POST no mesmo CPF, realizar um DELETE, e então realizar outro POST
 		
@@ -401,5 +428,4 @@ public class POSTSimulacoesTests  extends BaseTest{
 		verbosService.deleteMassa(responseRepetido, simulacaoRepetido);
 		
 		}
-	
 }
