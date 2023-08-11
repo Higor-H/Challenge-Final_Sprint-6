@@ -69,7 +69,7 @@ No contexto de funcionalidades da API "Simulação de Crédito v1", principalmen
 
 1. CPFs com restrições não devem poder realizar ações de simulações de crédito
 2. O CPF deve ter o formato 99999999999 e não deve ter o formato 999.999.999-99
-3. O nome da pessoa deve ser um nome válido
+3. O nome da pessoa deve ser um nome válido 
 4. O e-mail deve ser um e-mail válido
 5. O valor da simulação deve ser >= R$1000 e <= R$40000
 6. O número de parcelas deve ser >= 2 e <= 48
@@ -95,21 +95,21 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 ### R1
 - CTU2R1_001 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro
 - CTU2R1_002 Teste tentando realizar um GET informando um CPF com restrição e esperar um erro
-- CTU2R1_003 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro
+- CTU2R1_003 Teste tentando realizar um PATCH informando um CPF com restrição e esperar um erro
 - CTU2R1_004 Teste tentando realizar um PUT em uma simulação que tem um CPF válido e tentar alterar ele para um CPF com restrição
-- CTU2R1_005 Teste tentando realizar um DELETE informando um CPF com restrição e esperar um erro
+- CTU2R1_005 Teste tentando realizar um DELETE informando um CPF com restrição e esperar um erro 
 
 ### R2
 - CTU2R2_001 Teste tentando realizar um POST de CPF usando o formato 999.999.999-99 e esperar um erro
 - CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro
-- CTU2R2_003 Teste tentando realizar um DELETE de CPF usando o formato 999.999.999-99 e esperar um erro
+- CTU2R2_003 Teste tentando realizar um DELETE de CPF usando o formato 999.999.999-99 e esperar um erro 
 - CTU2R2_004 Teste tentando realizar um PATCH de CPF usando o formato 999.999.999-99 e esperar um erro
 - CTU2R2_005 Teste tentando realizar um PUT de CPF válido para o formato 999.999.999-99 e esperar um erro
 - CTU2R2_006 Teste tentando realizar um POST de usando o formato 99999999999 e esperar um sucesso
 - CTU2R2_007 Teste tentando realizar um POST de usando o formato 99999999999 sendo string e esperar um erro
 - CTU2R2_008 Teste tentando realizar um PUT de CPF válido para o formato 99999999999 sendo string e esperar um erro
 - CTU2R2_009 Teste tentando realizar um POST de usando o passando letras e outros caracteres esperar um erro
-- CTU2R2_010 Teste tentando realizar um PUTde CPF valido o passando letras e outros caracteres esperar um erro
+- CTU2R2_010 Teste tentando realizar um PUT de CPF valido o passando letras e outros caracteres esperar um erro
 
 ### R3
 - CTU2R3_001 Teste tentando realizar um POST com o campo nome sendo um caractere em branco
@@ -119,13 +119,14 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 - CTU2R3_005 Teste tentando realizar um POST sem informar o campo nome
 - CTU2R3_006 Teste tentando realizar um POST com um nome muito longo
 - CTU2R3_007 Teste tentando realizar um POST com um nome sendo apenas 1 caractere
+- CTU2R3_008 Teste tentando realizar um PUT com nome invalido
 
 ### R4
 - CTU2R4_001 Teste tentando realizar um POST com um email válido (xx.xx@xx.xx)
 - CTU2R4_002 Teste tentando realizar um POST com o campo email sendo um caractere em branco
-- CTU2R4_003 Teste tentando realizar um POST com o campo nome sendo um valor nulo
-- CTU2R4_004 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido
-- CTU2R4_005 Teste tentando realizar um POST com o campo nome sendo um apenas números
+- CTU2R4_003 Teste tentando realizar um POST com o campo email sendo um valor nulo
+- CTU2R4_004 Teste tentando realizar um POST com o campo email sendo um caracteres invalido
+- CTU2R4_005 Teste tentando realizar um POST com o campo email sendo um apenas números 
 - CTU2R4_006 Teste tentando realizar um POST com email com excesso de caracteres aceitos
 - CTU2R4_007 Teste tentando realizar um POST com email com o mínimo de caracteres aceitos
 - CTU2R4_008 Teste tentando realizar um PUT com email invalido
@@ -134,7 +135,7 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 - CTU2R5_001 Teste tentando realizar um POST com o campo valor sendo menor que 1000
 - CTU2R5_002 Teste tentando realizar um POST com o campo valor sendo maior que 40000
 - CTU2R5_003 Teste tentando realizar um POST com o campo valor sendo maior que 999 e menor que 40001
-- CTU2R5_004 Teste tentando realizar um POST com o campo valor uma string
+- CTU2R5_004 Teste tentando realizar um POST com o campo valor uma string 
 - CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000
 
 ### R6
@@ -149,7 +150,7 @@ CT = Caso de Teste, U1 = User Story 001, R1 = Regra de negócio número 1, _001 
 - CTU2R7_001 Teste tentando realizar um POST com o campo seguro não sendo um booleano
 - CTU2R7_002 Teste tentando realizar um POST com o campo seguro sendo um booleano
 - CTU2R7_003 Teste tentando realizar um POST com o campo seguro sendo string
-- CTU2R7_004 Teste tentando realizar um PUT com o campo seguro não sendo um booleano
+- CTU2R7_004 Teste tentando realizar um PUT com o campo seguro não sendo um booleano 
 
 ### R8
 - CTU2R8_001 Teste tentando realizar um POST passando um CPF já utilizado
@@ -205,26 +206,20 @@ Esses testes são os que mais se repetem no processo de teste da aplicação, po
 
 - CTU2R1_001 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro
 - CTU2R1_002 Teste tentando realizar um GET informando um CPF com restrição e esperar um erro
-- CTU2R1_003 Teste tentando realizar um POST informando um CPF com restrição e esperar um erro
 - CTU2R1_004 Teste tentando realizar um PUT em uma simulação que tem um CPF válido e tentar alterar ele para um CPF com restrição
-- CTU2R1_005 Teste tentando realizar um DELETE informando um CPF com restrição e esperar um erro
 ---
-- CTU2R1_001 Teste tentando realizar um POST de CPF usando o formato 999.999.999-99 e esperar um erro
-- CTU2R1_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro
-- CTU2R1_003 Teste tentando realizar um DELETE de CPF usando o formato 999.999.999-99 e esperar um erro
-- CTU2R1_004 Teste tentando realizar um PATCH de CPF usando o formato 999.999.999-99 e esperar um erro
-- CTU2R1_005 Teste tentando realizar um PUT de CPF válido para o formato 999.999.999-99 e esperar um erro
-- CTU2R1_006 Teste tentando realizar um POST de usando o formato 99999999999 e esperar um sucesso
-- CTU2R1_007 Teste tentando realizar um POST de usando o formato 99999999999 sendo string e esperar um erro
-- CTU2R1_008 Teste tentando realizar um PUT de CPF válido para o formato 99999999999 sendo string e esperar um erro
-- CTU2R1_009 Teste tentando realizar um POST de usando o passando letras e outros caracteres esperar um erro
-- CTU2R1_010 Teste tentando realizar um PUTde CPF valido o passando letras e outros caracteres esperar um erro
+- CTU2R2_001 Teste tentando realizar um POST de CPF usando o formato 999.999.999-99 e esperar um erro
+- CTU2R2_002 Teste tentando realizar um GET de CPF usando o formato 999.999.999-99 e esperar um erro
+- CTU2R2_005 Teste tentando realizar um PUT de CPF válido para o formato 999.999.999-99 e esperar um erro
+- CTU2R2_006 Teste tentando realizar um POST de usando o formato 99999999999 e esperar um sucesso
+- CTU2R2_007 Teste tentando realizar um POST de usando o formato 99999999999 sendo string e esperar um erro
+- CTU2R2_008 Teste tentando realizar um PUT de CPF válido para o formato 99999999999 sendo string e esperar um erro
+- CTU2R2_009 Teste tentando realizar um POST de usando o passando letras e outros caracteres esperar um erro
+- CTU2R2_010 Teste tentando realizar um PUTde CPF valido o passando letras e outros caracteres esperar um erro
 ---
 - CTU2R3_001 Teste tentando realizar um POST com o campo nome sendo um caractere em branco
-- CTU2R3_002 Teste tentando realizar um POST com o campo nome sendo um valor nulo
 - CTU2R3_003 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido
 - CTU2R3_004 Teste tentando realizar um POST com o campo nome sendo um apenas números
-- CTU2R3_005 Teste tentando realizar um POST sem informar o campo nome
 - CTU2R3_006 Teste tentando realizar um POST com um nome muito longo
 - CTU2R3_007 Teste tentando realizar um POST com um nome sendo apenas 1 caractere
 ---
@@ -232,27 +227,18 @@ Esses testes são os que mais se repetem no processo de teste da aplicação, po
 - CTU2R4_002 Teste tentando realizar um POST com o campo email sendo um caractere em branco
 - CTU2R4_003 Teste tentando realizar um POST com o campo nome sendo um valor nulo
 - CTU2R4_004 Teste tentando realizar um POST com o campo nome sendo um caracteres invalido
-- CTU2R4_005 Teste tentando realizar um POST com o campo nome sendo um apenas números
 - CTU2R4_006 Teste tentando realizar um POST com email com excesso de caracteres aceitos
-- CTU2R4_007 Teste tentando realizar um POST com email com o mínimo de caracteres aceitos
 - CTU2R4_008 Teste tentando realizar um PUT com email invalido
 ---
 - CTU2R5_001 Teste tentando realizar um POST com o campo valor sendo menor que 1000
 - CTU2R5_002 Teste tentando realizar um POST com o campo valor sendo maior que 40000
 - CTU2R5_003 Teste tentando realizar um POST com o campo valor sendo maior que 999 e menor que 40001
-- CTU2R5_004 Teste tentando realizar um POST com o campo valor uma string
-- CTU2R6_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000
+- CTU2R5_005 Teste tentando realizar um PUT com o campo valor sendo menor 1000 ou maior 40000
 ---
 - CTU2R6_001 Teste tentando realizar um POST com o campo parcelas sendo menor que 2
 - CTU2R6_002 Teste tentando realizar um POST com o campo parcelas sendo maior que 48
 - CTU2R6_003 Teste tentando realizar um POST com o campo parcelas sendo maior que 1 e menor que 49
-- CTU2R6_004 Teste tentando realizar um POST com com o campo parcelas uma string
 - CTU2R6_005 Teste tentando realizar um PUT com o campo parcelas sendo menor 2 ou maior 48
----
-- CTU2R7_001 Teste tentando realizar um POST com o campo seguro não sendo um booleano
-- CTU2R7_002 Teste tentando realizar um POST com o campo seguro sendo um booleano
-- CTU2R7_003 Teste tentando realizar um POST com o campo seguro sendo string
-- CTU2R7_004 Teste tentando realizar um PUT com o campo seguro não sendo um booleano
 ---
 - CTU2R8_001 Teste tentando realizar um POST passando um CPF já utilizado
 - CTU2R8_002 Teste realizando um POST de uma simulação, tentando realizar outro POST no mesmo CPF, realizar um DELETE, e então realizar outro POST
@@ -265,8 +251,6 @@ Esses testes são os que mais se repetem no processo de teste da aplicação, po
 ---
 - CTU2R12_001 Teste tentando realizar um DELETE em uma simulação pelo CPF, Nome, email ou outro dado do cadastro
 - CTU2R12_002 Teste tentando realizar um DELETE em uma simulação pelo ID
-- CTU2R12_003 Teste tentando realizar um DELETE em uma simulação pelo ID via query
-- CTU2R12_004 Teste tentando realizar um DELETE em uma simulação pelo CPF via query
 - CTU2R12_005 Teste tentando realizar um DELETE em uma simulação sem passar um valor e esperar que o banco de dados não seja deletado
 
 
@@ -313,6 +297,12 @@ US 002: [API] Simulações
 - Automação de testes baseado na análise realizada;
 - Reports realizados e relatados.
 
+### Links para materiais complementares
+
+[Links Uteis Doc](https://docs.google.com/document/d/1V4Ivsur7kMg_KByYb0foMhyQZ419nKII07iXW0mnAxo/edit?usp=sharing)
+
+[Mapa Mental Link](https://xmind.works/share/jbV437G7)
+![Mapa Mental](img_plano_de_testes/API%20-%20Sicredi-Map%201.png)
 
 ### Pessoas que testaram ![Pessoas Icon](img_plano_de_testes/people.svg)
 
@@ -341,7 +331,7 @@ US 002: [API] Simulações
 * Git 2.41.0.windows.3
 
 (Mais informações de versões no arquivo pom.xml na pasta raiz do projeto no GitLab )
-[Veja o Pom.xml Aqui!](https://gitlab.com/higor_sprints/challenge-final-sprint-6)
+[Veja o Pom.xml Aqui!](https://gitlab.com/higor_sprints/challenge-final-sprint-6/-/blob/Projeto_de_automa%C3%A7%C3%A3o/ChallengeFinal/pom.xml?ref_type=heads)
 
 
 ### Versão da aplicação
